@@ -21,6 +21,7 @@
 - Use the `Product` component to display the information imported from the json.
 - Pressing on a `Product` should scale up the card while being pressed, giving the impression of the card rising up to the user's finger, before navigating them to a Details screen.
   - This animation needs to be custom made, using no packages.
+  - Install the missing dependencies for this navigation.
 
 ### Details screen
 - Create a screen that will display all of the information about the selected `Product`.
