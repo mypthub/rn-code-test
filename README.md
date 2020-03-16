@@ -8,24 +8,26 @@
 - The image must always conform to a 4:3 ratio.
 - Images must cover all available space. There should be no whitespace in the component.
 - The "Info bar" at the bottom of the component must be semi-transparent.
-- The component must display a Title, Price, Short description.
+- The component must display a Name, Price, Short description.
 - Additional: Display a circular avatar in the "Info bar".
 - Assume prices are in GBP.
 - Prices are provided as integers, but must be formatted as floats (100 -> 1.00).
 - Prices can be discounted, either by value, or percentage.
 - If a price is discounted, display the discounted price, and the original with strike-through.
+- If the product is has a final cost of 0, display the text `Free` instead of the price.
 
 ### Update the second tab to display the information
 - This screen should consist of a vertical list.
-- Nested inside of this should be 4 horizontal lists. One for each product category.
-- Use the `Product` component to display the information imported from the json.
+- Nested inside of this should be 3 horizontal lists. One for each product category.
+- The items on each category should be sorted according to the `order` specified in the product.
+- Edit the `Product` component to display the information imported from the json.
 - Pressing on a `Product` should scale up the card while being pressed, giving the impression of the card rising up to the user's finger, before navigating them to a Details screen.
   - This animation needs to be custom made, using no packages.
   - Install the missing dependencies for this navigation.
 
 ### Details screen
 - Create a screen that will display all of the information about the selected `Product`.
-- This screen should display the image at the top, the title underneath, the price under this and then the description underneath.
+- This screen should display the image at the top, the name underneath, the price under this and then the description underneath.
 - There must be a button at the top of the page to go back to the previous tabbed interface.
 
 ### Native Integration.
