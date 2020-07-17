@@ -12,7 +12,7 @@ const MarketStack = createStackNavigator();
 
 function MarketStackScreen() {
   return (
-    <MarketStack.Navigator>
+    <MarketStack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
       <MarketStack.Screen
         options={{ headerShown: false }}
         name="Market"

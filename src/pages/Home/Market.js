@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-  View,
-  Text,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, StyleSheet, FlatList, View, Text } from 'react-native';
 import Product from '../../components/Product';
 import products from '../../../assets/products.json';
 
 const Market = () => {
-  const navigation = useNavigation();
-
   var products_sorted = {};
   products.forEach(product => {
     if (product.category in products_sorted) {
@@ -25,12 +15,9 @@ const Market = () => {
 
   const renderProducts = ({ item }) => {
     return (
-      <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('Details', { data: item })}>
-        <View>
-          <Product data={item} />
-        </View>
-      </TouchableWithoutFeedback>
+      <View>
+        <Product data={item} />
+      </View>
     );
   };
 
