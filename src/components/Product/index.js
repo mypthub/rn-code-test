@@ -5,11 +5,38 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableWithoutFeedback,
+  Animated,
 } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 
 export default class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      animationValue: new Animated.Value(1),
+    };
+    this.handlePressIn = this.handlePressIn.bind(this);
+    this.handlePressOut = this.handlePressOut.bind(this);
+  }
+
+  handlePressIn() {
+    Animated.spring(this.state.animationValue, {
+      toValue: 2,
+    }).start();
+  }
+
+  handlePressOut() {
+    Animated.spring(this.state.animationValue, {
+      toValue: 1,
+      friction: 2,
+      tension: 10,
+    }).start();
+  }
+
   render() {
+    const animatedStyle = {
+      transform: [{ scale: this.state.animationValue }],
+    };
     const { data } = this.props;
     var price = data.price;
     var price_text = '';
@@ -57,6 +84,8 @@ export default class Product extends Component {
 
     return (
       <TouchableWithoutFeedback
+        onPressIn={this.handlePressIn}
+        onPressOut={this.handlePressOut}
         onPress={() =>
           this.props.navigation.navigate('Details', {
             data: data,
@@ -64,31 +93,36 @@ export default class Product extends Component {
             old_price: old_price,
           })
         }>
-        <ImageBackground source={{ uri: data.image }} style={styles.image}>
-          <View style={styles.info_bar}>
-            <View style={styles.title_view}>
-              <View>
-                <Text style={styles.text}>{data.name}</Text>
-                {price_view}
+        <Animated.View style={[styles.container, animatedStyle]}>
+          <ImageBackground source={{ uri: data.image }} style={styles.image}>
+            <View style={styles.info_bar}>
+              <View style={styles.title_view}>
+                <View>
+                  <Text style={styles.text}>{data.name}</Text>
+                  {price_view}
+                </View>
+                <View style={styles.avatar_view}>
+                  <UserAvatar
+                    size={20}
+                    src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+                  />
+                </View>
               </View>
-              <View style={styles.avatar_view}>
-                <UserAvatar
-                  size={20}
-                  src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
-                />
-              </View>
+              <Text style={styles.text_description}>
+                {data.short_description}
+              </Text>
             </View>
-            <Text style={styles.text_description}>
-              {data.short_description}
-            </Text>
-          </View>
-        </ImageBackground>
+          </ImageBackground>
+        </Animated.View>
       </TouchableWithoutFeedback>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   image: {
     aspectRatio: 4 / 3,
     justifyContent: 'flex-end',
