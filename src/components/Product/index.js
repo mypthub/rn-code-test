@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,85 +6,87 @@ import {
   ImageBackground,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import UserAvatar from 'react-native-user-avatar';
 
-const Product = ({ data }) => {
-  const navigation = useNavigation();
-
-  var price = data.price;
-  var price_text = '';
-  var old_price = '';
-  var price_view = null;
-  if (data.discount_type === 'amount') {
-    price -= data.discount;
-    if (price === 0) {
-      price_text = 'Free';
-      price_view = <Text style={styles.text}>{price_text}</Text>;
-    } else {
-      price_text = price.toFixed(2) + '£ - ';
-      old_price = data.price.toFixed(2) + '£';
-      price_view = (
-        <View style={styles.price_view}>
-          <Text style={styles.text}>{price_text}</Text>
-          <Text style={styles.text_discount}>{old_price}</Text>
-        </View>
-      );
-    }
-  } else if (data.discount_type === 'percentage') {
-    price -= (price * data.discount) / 100;
-    if (price === 0) {
-      price_text = 'Free';
-      price_view = <Text style={styles.text}>{price_text}</Text>;
-    } else {
-      price_text = price.toFixed(2) + '£ - ';
-      old_price = data.price.toFixed(2) + '£';
-      price_view = (
-        <View style={styles.price_view}>
-          <Text style={styles.text}>{price_text}</Text>
-          <Text style={styles.text_discount}>{old_price}</Text>
-        </View>
-      );
-    }
-  } else {
-    if (price === 0) {
-      price_text = 'Free';
-      price_view = <Text style={styles.text}>{price_text}</Text>;
-    } else {
-      price_text = price.toFixed(2) + '£';
-      price_view = <Text style={styles.text}>{price_text}</Text>;
-    }
-  }
-
-  return (
-    <TouchableWithoutFeedback
-      onPress={() =>
-        navigation.navigate('Details', {
-          data: data,
-          price: price_text,
-          old_price: old_price,
-        })
-      }>
-      <ImageBackground source={{ uri: data.image }} style={styles.image}>
-        <View style={styles.info_bar}>
-          <View style={styles.title_view}>
-            <View>
-              <Text style={styles.text}>{data.name}</Text>
-              {price_view}
-            </View>
-            <View style={styles.avatar_view}>
-              <UserAvatar
-                size={20}
-                src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
-              />
-            </View>
+export default class Product extends Component {
+  render() {
+    const { data } = this.props;
+    var price = data.price;
+    var price_text = '';
+    var old_price = '';
+    var price_view = null;
+    if (data.discount_type === 'amount') {
+      price -= data.discount;
+      if (price === 0) {
+        price_text = 'Free';
+        price_view = <Text style={styles.text}>{price_text}</Text>;
+      } else {
+        price_text = price.toFixed(2) + '£ - ';
+        old_price = data.price.toFixed(2) + '£';
+        price_view = (
+          <View style={styles.price_view}>
+            <Text style={styles.text}>{price_text}</Text>
+            <Text style={styles.text_discount}>{old_price}</Text>
           </View>
-          <Text style={styles.text_description}>{data.short_description}</Text>
-        </View>
-      </ImageBackground>
-    </TouchableWithoutFeedback>
-  );
-};
+        );
+      }
+    } else if (data.discount_type === 'percentage') {
+      price -= (price * data.discount) / 100;
+      if (price === 0) {
+        price_text = 'Free';
+        price_view = <Text style={styles.text}>{price_text}</Text>;
+      } else {
+        price_text = price.toFixed(2) + '£ - ';
+        old_price = data.price.toFixed(2) + '£';
+        price_view = (
+          <View style={styles.price_view}>
+            <Text style={styles.text}>{price_text}</Text>
+            <Text style={styles.text_discount}>{old_price}</Text>
+          </View>
+        );
+      }
+    } else {
+      if (price === 0) {
+        price_text = 'Free';
+        price_view = <Text style={styles.text}>{price_text}</Text>;
+      } else {
+        price_text = price.toFixed(2) + '£';
+        price_view = <Text style={styles.text}>{price_text}</Text>;
+      }
+    }
+
+    return (
+      <TouchableWithoutFeedback
+        onPress={() =>
+          this.props.navigation.navigate('Details', {
+            data: data,
+            price: price_text,
+            old_price: old_price,
+          })
+        }>
+        <ImageBackground source={{ uri: data.image }} style={styles.image}>
+          <View style={styles.info_bar}>
+            <View style={styles.title_view}>
+              <View>
+                <Text style={styles.text}>{data.name}</Text>
+                {price_view}
+              </View>
+              <View style={styles.avatar_view}>
+                <UserAvatar
+                  size={20}
+                  src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"
+                />
+              </View>
+            </View>
+            <Text style={styles.text_description}>
+              {data.short_description}
+            </Text>
+          </View>
+        </ImageBackground>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   image: {
@@ -124,5 +126,3 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
-
-export default Product;
