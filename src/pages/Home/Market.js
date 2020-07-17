@@ -1,9 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, FlatList, View, Text } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Product from '../../components/Product';
 import products from '../../../assets/products.json';
 
 const Market = () => {
+  const navigation = useNavigation();
+
   var products_sorted = {};
   products.forEach(product => {
     if (product.category in products_sorted) {
@@ -14,12 +24,19 @@ const Market = () => {
   });
 
   const renderProducts = ({ item }) => {
-    return <Product data={item} />;
+    return (
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('Details', { data: item })}>
+        <View>
+          <Product data={item} />
+        </View>
+      </TouchableWithoutFeedback>
+    );
   };
 
   const renderLists = ({ item }) => {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.text}>{item[0].category}</Text>
         <FlatList horizontal={true} data={item} renderItem={renderProducts} />
       </View>
@@ -37,9 +54,13 @@ const Market = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: 300,
+  },
   text: {
     color: 'black',
-    fontSize: 50,
+    fontSize: 40,
     alignSelf: 'center',
     marginBottom: 5,
     marginTop: 10,

@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     overflow: 'hidden',
     marginHorizontal: 10,
+    flex: 1,
   },
   info_bar: {
     padding: 7,
