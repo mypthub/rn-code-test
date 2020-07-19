@@ -1,6 +1,4 @@
 #import "AppConfig.h"
-@interface AppConfig()
-@end
 
 @implementation AppConfig
 RCT_EXPORT_MODULE();

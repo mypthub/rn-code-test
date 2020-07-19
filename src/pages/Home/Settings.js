@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, StyleSheet, Platform } from 'react-native';
-import ServiceKeyModule from '../../modules/ServiceKeyModule';
-import AppConfig from '../../modules/AppConfigModule';
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  Platform,
+  NativeModules,
+} from 'react-native';
 
 export default class Settings extends Component {
   constructor() {
@@ -15,12 +19,19 @@ export default class Settings extends Component {
   componentDidMount() {
     if (__DEV__) {
       if (Platform.OS === 'ios') {
-        AppConfig.getPListValue('SERVICE_KEY', (error, keyValue) => {
-          console.log(keyValue);
-          this.setState({ debug_service_key: keyValue });
-        });
+        NativeModules.AppConfig.getPListValue(
+          'SERVICE_KEY',
+          (error, keyValue) => {
+            if (error) {
+              console.error(error);
+            } else {
+              console.log(keyValue);
+              this.setState({ debug_service_key: keyValue });
+            }
+          },
+        );
       } else {
-        ServiceKeyModule.GetServiceKey()
+        NativeModules.ServiceKeyModule.GetServiceKey()
           .then(key => {
             this.setState({ debug_service_key: key });
           })
