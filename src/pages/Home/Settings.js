@@ -11,8 +11,7 @@ export default class Settings extends Component {
   constructor() {
     super();
     this.state = {
-      release_service_key: 'le475jUm1D',
-      debug_service_key: null,
+      service_key: null,
     };
   }
 
@@ -22,42 +21,31 @@ export default class Settings extends Component {
         NativeModules.AppConfig.getPListValue(
           'SERVICE_KEY',
           (error, keyValue) => {
-            if (error) {
-              console.error(error);
-            } else {
-              console.log(keyValue);
-              this.setState({ debug_service_key: keyValue });
-            }
+            console.log(error, keyValue);
+            // this.setState({ service_key: keyValue });
           },
         );
       } else {
         NativeModules.ServiceKeyModule.GetServiceKey()
           .then(key => {
-            this.setState({ debug_service_key: key });
+            this.setState({ service_key: key });
           })
           .catch(error => {
             throw error;
           });
       }
+    } else {
+      this.setState({ service_key: 'le475jUm1D' });
     }
   }
 
   render() {
-    if (__DEV__) {
-      const text = 'Service Key: {' + this.state.debug_service_key + '}';
-      return (
-        <SafeAreaView style={styles.container}>
-          <Text style={styles.text}>{text}</Text>
-        </SafeAreaView>
-      );
-    } else {
-      const text = 'Service Key: {' + this.state.release_service_key + '}';
-      return (
-        <SafeAreaView style={styles.container}>
-          <Text style={styles.text}>{text}</Text>
-        </SafeAreaView>
-      );
-    }
+    const text = 'Service Key: {' + this.state.service_key + '}';
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.text}>{text}</Text>
+      </SafeAreaView>
+    );
   }
 }
 
