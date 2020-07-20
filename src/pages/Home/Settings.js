@@ -21,8 +21,7 @@ export default class Settings extends Component {
         NativeModules.AppConfig.getPListValue(
           'SERVICE_KEY',
           (error, keyValue) => {
-            console.log(error, keyValue);
-            // this.setState({ service_key: keyValue });
+            this.setState({ service_key: keyValue });
           },
         );
       } else {
