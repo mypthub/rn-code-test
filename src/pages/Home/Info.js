@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, Linking, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, Linking, StyleSheet, View } from 'react-native';
 import Product from '../../components/Product';
 import products from '../../../assets/products.json';
 
@@ -15,7 +15,14 @@ const Info = () => (
       }}>
       https://github.com/mypthub/rn-code-test/blob/master/README.md
     </Text>
-    <Product product={products[0]} />
+    <Text>!!!!! DEBUGGING !!!!!</Text>
+    <View style={{ maxWidth: 165 }}>
+      <Product product={products[1]} />
+    </View>
+    <View style={{ maxWidth: 250 }}>
+      <Product product={products[1]} />
+    </View>
+    <Product product={products[1]} />
   </SafeAreaView>
 );
 
