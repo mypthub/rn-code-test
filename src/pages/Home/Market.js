@@ -74,13 +74,22 @@ class ProductCategory extends Component {
 }
 
 export default class Market extends Component {
-  overlay: null;
-  productInfoOverlay: null;
+  state = {
+    isListVisible: true,
+  };
+
+  overlay = null;
+  productInfoOverlay = null;
 
   render() {
+    const listStyle = {
+      display: this.state.isListVisible ? 'flex' : 'none',
+    };
+
     return (
       <SafeAreaView>
         <FlatList
+          style={listStyle}
           data={this.getCategories()}
           renderItem={({ item }) => (
             <ProductCategory category={item.key} parent={this} />
@@ -88,6 +97,7 @@ export default class Market extends Component {
         />
         <AnimatedProductOverlay ref={component => (this.overlay = component)} />
         <FullProductInfoOverlay
+          parent={this}
           ref={component => (this.productInfoOverlay = component)}
         />
       </SafeAreaView>
@@ -113,6 +123,13 @@ export default class Market extends Component {
 
   completeOverlayAnimation() {
     this.overlay.completeAnimatedDisplay();
+    this.state.isListVisible = false;
+    this.forceUpdate();
     this.productInfoOverlay.showWithProduct(this.overlay.state.product);
+  }
+
+  redisplayList() {
+    this.state.isListVisible = true;
+    this.forceUpdate();
   }
 }

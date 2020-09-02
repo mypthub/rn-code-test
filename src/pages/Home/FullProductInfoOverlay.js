@@ -10,38 +10,46 @@ import {
 } from 'react-native';
 import InfoBar from '../../components/Product/InfoBar';
 
+const estimatedSizeOfNavigationBar = 75;
+
 export default class FullProductInfoOverlay extends Component {
   state = {
     product: null,
   };
 
+  parent = null;
+  scrollView = null;
+
   onOrientationChanged = () => this.forceUpdate();
 
   constructor(props) {
     super(props);
+    this.parent = props.parent;
     Dimensions.addEventListener('change', this.onOrientationChanged);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.onOrientationChanged);
   }
 
   render() {
     const dimensions = Dimensions.get('window');
-    const isLandscape = dimensions.width > dimensions.height;
 
     const style = {
-      zIndex: 200,
-      position: 'absolute',
-      top: isLandscape ? 0 : 40,
-      left: isLandscape ? 40 : 0,
-      width: '100%',
-      height: isLandscape ? dimensions.height - 100 : dimensions.height - 160,
-      backgroundColor: 'white',
       display: this.state.product == null ? 'none' : 'flex',
     };
 
     return (
       <SafeAreaView style={style}>
         <Button onPress={() => this.dismiss()} title={'< Back'} />
-        <View style={{ height: 'auto', maxHeight: dimensions.height }}>
-          <ScrollView>{this.getProductDisplay()}</ScrollView>
+        <View
+          style={{
+            height: 'auto',
+            maxHeight: dimensions.height - estimatedSizeOfNavigationBar,
+          }}>
+          <ScrollView ref={component => (this.scrollView = component)}>
+            {this.getProductDisplay()}
+          </ScrollView>
         </View>
       </SafeAreaView>
     );
@@ -62,12 +70,14 @@ export default class FullProductInfoOverlay extends Component {
 
   showWithProduct(product) {
     this.state.product = product;
+    this.scrollView.scrollTo({ x: 0, y: 0, animated: false });
     this.forceUpdate();
   }
 
   dismiss() {
     this.state.product = null;
     this.forceUpdate();
+    this.parent.redisplayList();
   }
 }
 

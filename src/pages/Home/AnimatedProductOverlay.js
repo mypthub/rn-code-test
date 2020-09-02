@@ -8,7 +8,7 @@ const aspectRatio = 4 / 3;
 // Note to reviewer: I'm sure there is a way to obtain the correct size of the nav bar,
 // perhaps by having Home/index.js listen for size changes and recording them,
 // but for the sake of this test I'm going to just use an estimate.
-const estimatedSizeOfNavigationBar = 70;
+const estimatedSizeOfNavigationBar = 75;
 
 export default class AnimatedProductOverlay extends Component {
   startingWidth = thumbnailWidth;
