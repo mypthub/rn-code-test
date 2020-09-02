@@ -49,6 +49,8 @@ function getAdaptiveStyles(displaySizeHint) {
     return smallStyles;
   } else if (displaySizeHint === 'medium') {
     return mediumStyles;
+  } else if (displaySizeHint === 'full') {
+    return fullStyles;
   }
   return styles;
 }
@@ -56,8 +58,14 @@ function getAdaptiveStyles(displaySizeHint) {
 const InfoBar = ({ product, displaySizeHint }) => {
   const maxNumberOfLines = getMaxNumberOfLines(displaySizeHint);
   const adaptiveStyles = getAdaptiveStyles(displaySizeHint);
+  const containerStyle = {
+    backgroundColor: 'black',
+    padding: 8,
+    opacity: displaySizeHint === 'full' ? 1 : 0.5,
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={containerStyle}>
       <View style={styles.titlePriceAndAvatar}>
         <View style={styles.titleAndPrice}>
           <Text numberOfLines={maxNumberOfLines} style={adaptiveStyles.title}>
@@ -76,7 +84,9 @@ const InfoBar = ({ product, displaySizeHint }) => {
         />
       </View>
       <Text numberOfLines={maxNumberOfLines} style={adaptiveStyles.description}>
-        {product.short_description}
+        {displaySizeHint === 'full'
+          ? product.description
+          : product.short_description}
       </Text>
     </View>
   );
@@ -166,6 +176,29 @@ const mediumStyles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 30,
+  },
+});
+
+const fullStyles = StyleSheet.create({
+  title: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  priceBox: {
+    flexDirection: 'row',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  description: {
+    color: 'white',
+    fontSize: 14,
+  },
+  avatar: {
+    width: 45,
+    height: 45,
+    borderRadius: 45,
   },
 });
 
