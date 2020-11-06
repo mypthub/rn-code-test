@@ -20,9 +20,11 @@ class Product extends PureComponent {
 
   render() {
     const { data } = this.props;
+
     return (
       <TouchableWithoutFeedback
         styles={styles.root}
+        onPress={() => this.onProductPress(data)}
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}>
         <Animated.View
@@ -40,7 +42,7 @@ class Product extends PureComponent {
                 uri: data.image,
               }}>
               <View style={styles.infoBar}>
-                <View style={{ flex: 1 }}>
+                <View style={styles.root}>
                   <Text style={styles.title} numberOfLines={1}>
                     {data.name}
                   </Text>
@@ -75,9 +77,15 @@ class Product extends PureComponent {
       toValue: 1,
     }).start();
   };
+
+  onProductPress = product => {
+    this.props.navigation.navigate('Details', {
+      productData: product,
+    });
+  };
 }
 
-const getProductPrice = (data) => {
+const getProductPrice = data => {
   const { price, discount, discount_type } = data;
   if (discount_type === null) {
     if (price === 0) {
@@ -103,10 +111,16 @@ const getProductPrice = (data) => {
 
     if (finalPrice > 0) {
       return (
-        <View style={{ flexDirection: 'row' }}>
+        <View style={styles.flexRow}>
           <Text style={styles.strikeThroughPrice}>GBP {price.toFixed(2)}</Text>
           <Text style={styles.price}> GBP {finalPrice.toFixed(2)}</Text>
         </View>
+      );
+    } else {
+      return (
+        <Text style={styles.price} numberOfLines={1}>
+          Free
+        </Text>
       );
     }
   }
@@ -115,7 +129,9 @@ const getProductPrice = (data) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    aspectRatio: 4 / 3,
+  },
+  flexRow: {
+    flexDirection: 'row',
   },
   productImage: {
     flex: 1,
@@ -153,7 +169,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
   },
-  avatar: { margin: 5, width: 25, height: 25, borderRadius: 25 },
+  avatar: { margin: 5, width: 30, height: 30, borderRadius: 30 },
 });
 
 export default Product;
