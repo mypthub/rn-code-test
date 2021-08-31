@@ -10,7 +10,9 @@ const Home = () => {
   return (
     <HomeTabs.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: iconProps => {
+          const { color, size } = iconProps;
+
           let iconName;
 
           if (route.name === 'Info') {
@@ -21,11 +23,11 @@ const Home = () => {
 
           // You can return any component that you like here!
           return <MaterialIcons name={iconName} size={size} color={color} />;
-        },
+        }
       })}
       tabBarOptions={{
         activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
+        inactiveTintColor: 'gray'
       }}>
       <HomeTabs.Screen name="Info" component={Info} />
       <HomeTabs.Screen name="Market" component={Market} />
