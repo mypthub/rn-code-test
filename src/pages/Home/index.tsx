@@ -6,7 +6,7 @@ import Market from './Market';
 
 const HomeTabs = createBottomTabNavigator();
 
-const Home = () => {
+const Home = (): React.ReactNode => {
   return (
     <HomeTabs.Navigator
       screenOptions={({ route }) => ({
@@ -22,12 +22,14 @@ const Home = () => {
           }
 
           // You can return any component that you like here!
-          return <MaterialIcons name={iconName} size={size} color={color} />;
-        }
+          return (
+            <MaterialIcons name={iconName || ''} size={size} color={color} />
+          );
+        },
       })}
       tabBarOptions={{
         activeTintColor: 'tomato',
-        inactiveTintColor: 'gray'
+        inactiveTintColor: 'gray',
       }}>
       <HomeTabs.Screen name="Info" component={Info} />
       <HomeTabs.Screen name="Market" component={Market} />
