@@ -5,9 +5,11 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          '@common': './src/common',
           '@components': './src/components',
           '@styles': './src/styles',
           '@pages': './src/pages',
+          types: './src/types/index.d.ts',
         },
       },
     ],

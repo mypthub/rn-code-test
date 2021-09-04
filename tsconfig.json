@@ -1,38 +1,41 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ]
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "jsx": "react",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "paths": {
+            "@common/*": [
+                "src/common/*"
+            ],
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@styles/*": [
+                "src/styles/*"
+            ],
+            "@pages/*": [
+                "src/pages/*"
+            ],
+            "types": [
+                "src/types/index.d.ts"
+            ]
+        },
+        "rootDir": "./",
+        "strict": true,
+        "target": "es5"
     },
-    "rootDir": "./",
-    "strict": true,
-    "target": "es5",
-    "typeRoots": [
-      "./node_modules/@types"
+    "exclude": [
+        "node_modules",
+        "babel.config.js",
+        "metro.config.js",
+        "jest.config.js"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
 }

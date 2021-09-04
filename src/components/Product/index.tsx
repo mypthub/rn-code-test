@@ -1,17 +1,19 @@
+import { ProductInfo } from '@components/Product/ProductInfo';
 import { styles } from '@styles/product';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
+import { IProduct } from 'types';
 
-const Product = () => {
+type Props = {
+  product: IProduct;
+};
+
+const Product = (props: Props) => {
+  const { product: p } = props;
   return (
     <View style={styles.product}>
-      <Image
-        source={{ uri: 'https://reactjs.org/logo-og.png' }}
-        style={styles.product__image}
-      />
-      <View style={styles.product__info}>
-        <Text>Misha</Text>
-      </View>
+      <Image source={{ uri: p.picUri }} style={styles.product__image} />
+      <ProductInfo product={p} />
     </View>
   );
 };
