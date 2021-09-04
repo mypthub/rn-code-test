@@ -21,6 +21,7 @@ export const Category = (props: Props) => {
         style={{
           ...commonStyles.font,
           ...commonStyles['font--bolder'],
+          paddingLeft: 7,
         }}>
         {name}
       </Text>

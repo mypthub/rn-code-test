@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   product: {
     borderRadius: 7,
     aspectRatio: 4 / 3,
-    marginLeft: 5,
+    margin: 7,
     overflow: 'hidden',
     position: 'relative',
   },

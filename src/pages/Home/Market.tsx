@@ -4,6 +4,7 @@ import { styles } from '@styles/market';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ICategory } from 'types';
+import {} from "@react-navigation/natives";
 
 const Market = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);

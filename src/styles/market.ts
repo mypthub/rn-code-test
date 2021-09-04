@@ -6,8 +6,6 @@ export const styles = StyleSheet.create({
     ...commonStyles.avoidStatusBar,
     ...commonStyles.margin,
     ...commonStyles['full-height'],
-    overflow: 'hidden',
-    width: '97%',
     paddingBottom: 35,
     display: 'flex',
   },

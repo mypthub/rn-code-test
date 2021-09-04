@@ -1,7 +1,8 @@
 import { ProductInfo } from '@components/Product/ProductInfo';
+import { RisingView } from '@components/RisingView';
 import { styles } from '@styles/product';
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import { IProduct } from 'types';
 
 type Props = {
@@ -11,10 +12,10 @@ type Props = {
 const Product = (props: Props) => {
   const { product: p } = props;
   return (
-    <View style={styles.product}>
+    <RisingView>
       <Image source={{ uri: p.picUri }} style={styles.product__image} />
       <ProductInfo product={p} />
-    </View>
+    </RisingView>
   );
 };
 
