@@ -11,7 +11,7 @@ const mkProduct = (n: number): IProduct => ({
     imageUri: `${AVATAR_URI}+${n}`,
   },
   price: Price
-    .of(Math.round(Math.round(Math.random() * 1000)))
+    .of(Math.round(Math.round(0)))
     .discountBy(-10)
     .percents(),
   title: `Product ${n}`,

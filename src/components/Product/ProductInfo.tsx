@@ -25,7 +25,7 @@ export const ProductInfo = (props: Props) => {
         <Text style={styles['product__info__props--title']}>{p.title}</Text>
         <Text style={styles['product__info__props--price']}>
           {formatPrice(p.price.value)}
-          <Text>{" "}</Text>
+          <Text>{' '}</Text>
           {p.price.map(maybeDiscount)}
         </Text>
         <Text style={styles['product__info__props--description']}>
