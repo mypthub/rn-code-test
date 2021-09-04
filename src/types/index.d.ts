@@ -8,8 +8,14 @@ export type ISeller = {
 
 export type IProduct = {
   description: string;
+  order: number;
   picUri: URI;
   price: Price;
   seller: ISeller;
   title: string;
+};
+
+export type ICategory = {
+  name: string;
+  products: IProduct[];
 };

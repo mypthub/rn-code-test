@@ -1,5 +1,5 @@
-import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Info from './Info';
 import Market from './Market';
@@ -30,7 +30,8 @@ const Home = (): React.ReactNode => {
       tabBarOptions={{
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
-      }}>
+      }}
+    >
       <HomeTabs.Screen name="Info" component={Info} />
       <HomeTabs.Screen name="Market" component={Market} />
     </HomeTabs.Navigator>

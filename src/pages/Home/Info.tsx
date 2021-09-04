@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, Linking, StyleSheet } from 'react-native';
+import { Linking, SafeAreaView, StyleSheet, Text } from 'react-native';
 
 const Info = () => (
   <SafeAreaView>
@@ -10,7 +10,8 @@ const Info = () => (
         Linking.openURL(
           'https://github.com/mypthub/rn-code-test/blob/master/README.md',
         );
-      }}>
+      }}
+    >
       https://github.com/mypthub/rn-code-test/blob/master/README.md
     </Text>
   </SafeAreaView>

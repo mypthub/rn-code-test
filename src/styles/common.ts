@@ -5,6 +5,15 @@ export const commonStyles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 2,
   },
+  'full-height': {
+    height: '100%',
+  },
+  avoidStatusBar: {
+    marginTop: 40,
+  },
+  margin: {
+    margin: 5,
+  },
   font: {
     fontStyle: 'normal',
     fontSize: 16,

@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   product: {
+    margin: 5,
     aspectRatio: 4 / 3,
     borderRadius: 7,
     overflow: 'hidden',
     position: 'relative',
-    width: '100%',
   },
   product__image: {
     aspectRatio: 4 / 3,
