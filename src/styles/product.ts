@@ -3,22 +3,21 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   product: {
-    margin: 5,
-    aspectRatio: 4 / 3,
     borderRadius: 7,
+    aspectRatio: 4 / 3,
+    marginLeft: 5,
     overflow: 'hidden',
     position: 'relative',
   },
   product__image: {
     aspectRatio: 4 / 3,
-    width: '100%',
   },
   product__info: {
     backgroundColor: '#282828',
     bottom: 0,
     display: 'flex',
     flexDirection: 'row',
-    height: '30%',
+    minHeight: '30%',
     opacity: 0.8,
     padding: 10,
     position: 'absolute',

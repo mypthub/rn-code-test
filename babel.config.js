@@ -9,6 +9,7 @@ module.exports = {
           '@components': './src/components',
           '@styles': './src/styles',
           '@pages': './src/pages',
+          '@side-effects': './src/side-effects',
           types: './src/types/index.d.ts',
         },
       },
