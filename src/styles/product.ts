@@ -25,8 +25,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
   },
-  product__info__avatar: {
-  },
+  product__info__avatar: {},
   product__info__props: {
     height: '100%',
   },
@@ -39,6 +38,12 @@ export const styles = StyleSheet.create({
     ...commonStyles.font,
     ...commonStyles['font--white'],
     ...commonStyles['font--bolder'],
+  },
+  'product__info__props--discount': {
+    ...commonStyles.font,
+    ...commonStyles['font--bolder'],
+    textDecorationLine: 'line-through',
+    color: '#ff5a5a',
   },
   'product__info__props--description': {
     ...commonStyles.font,

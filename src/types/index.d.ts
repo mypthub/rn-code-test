@@ -1,6 +1,6 @@
-export type URI = string;
+import { Price } from '@common/price';
 
-export type IPrice = number;
+export type URI = string;
 
 export type ISeller = {
   imageUri: URI;
@@ -9,7 +9,7 @@ export type ISeller = {
 export type IProduct = {
   description: string;
   picUri: URI;
-  price: IPrice;
+  price: Price;
   seller: ISeller;
   title: string;
 };

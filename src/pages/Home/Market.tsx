@@ -1,25 +1,32 @@
 import { AVATAR_URI, IMAGE_URI } from '@common/constants';
+import { Price } from '@common/price';
 import Product from '@components/Product';
 import { styles } from '@styles/market';
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { IProduct } from 'types';
 
-const product: IProduct = {
+const mkProduct = (n: number): IProduct => ({
   seller: {
-    imageUri: AVATAR_URI,
+    imageUri: `${AVATAR_URI}+${n}`,
   },
-  description: 'Decription 1',
-  picUri: IMAGE_URI,
-  price: 10,
-  title: 'Title 1',
-};
+  price: Price
+    .of(Math.round(Math.round(Math.random() * 1000)))
+    .discountBy(-10)
+    .percents(),
+  title: `Product ${n}`,
+  description: `Description ${n}`,
+  picUri: `${IMAGE_URI}+${n}`,
+});
 
 const Market = () => {
+  const products = [1, 2, 3].map(mkProduct);
   return (
-    <View style={styles.market}>
-      <Product product={product} />
-    </View>
+    <ScrollView style={styles.market}>
+      {products.map(p => (
+        <Product key={p.title} product={p} />
+      ))}
+    </ScrollView>
   );
 };
 
