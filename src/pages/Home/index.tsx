@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import { getServiceCode } from '@side-effects/service-code';
+import React, { useEffect } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Info from './Info';
 import Market from './Market';
@@ -7,6 +8,9 @@ import Market from './Market';
 const HomeTabs = createBottomTabNavigator();
 
 export const Home = () => {
+  useEffect(() => {
+    getServiceCode().then(console.log);
+  });
   return (
     <HomeTabs.Navigator
       screenOptions={({ route }) => ({
