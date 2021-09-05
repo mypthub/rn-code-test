@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native';
 
-const { CodeModule } = NativeModules;
+const { ServiceCodeModule } = NativeModules;
 
-export const getServiceCode = (): Promise<string> => CodeModule.getCode();
+export const getServiceCode = (): Promise<string> =>
+  ServiceCodeModule.getCode();

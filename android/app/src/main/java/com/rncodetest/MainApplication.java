@@ -7,7 +7,7 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.rncodetest.scode.CodePackage;
+import com.rncodetest.scode.ServiceCodePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -25,7 +25,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
-          packages.add(new CodePackage())
+          packages.add(new ServiceCodePackage());
           return packages;
         }
 

@@ -1,5 +1,5 @@
 package com.rncodetest.scode
 
 object Defs {
-    const val MODULE_NAME = "CodeModule"
+    const val MODULE_NAME = "ServiceCodeModule"
 }

@@ -1,5 +1,5 @@
 import { Categories } from '@components/Categories';
-import { ProductDetails } from '@pages/Home/ProductDetails';
+import { ProductDetails } from '@pages/ProductDetails';
 import React from 'react';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { MarketStackParams } from 'types';
