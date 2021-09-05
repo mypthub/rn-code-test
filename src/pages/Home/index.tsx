@@ -6,7 +6,7 @@ import Market from './Market';
 
 const HomeTabs = createBottomTabNavigator();
 
-const Home = (): React.ReactNode => {
+export const Home = () => {
   return (
     <HomeTabs.Navigator
       screenOptions={({ route }) => ({
@@ -37,5 +37,3 @@ const Home = (): React.ReactNode => {
     </HomeTabs.Navigator>
   );
 };
-
-export default Home;
