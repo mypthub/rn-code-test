@@ -14,7 +14,7 @@ const getRealSize = (type: Props['size']): number =>
 
 export const Avatar = (props: Props) => (
   <Image
-    style={{ ...styles.avatar__image, height: getRealSize(props.size) }}
+    style={[styles.avatar__image, { height: getRealSize(props.size) }]}
     source={{ uri: props.uri }}
   />
 );

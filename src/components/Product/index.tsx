@@ -13,7 +13,7 @@ const Product = (props: Props) => {
   const { product: p } = props;
   return (
     <RisingView>
-      <Image source={{ uri: p.picUri }} style={styles.product__image} />
+      <Image source={{ uri: p.image }} style={styles.product__image} />
       <ProductInfo product={p} />
     </RisingView>
   );

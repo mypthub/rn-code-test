@@ -1,22 +1,19 @@
-import { Category } from '@components/Category';
-import { getProductData } from '@side-effects/server';
-import { styles } from '@styles/market';
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { ICategory } from 'types';
+import { Categories } from '@components/Categories';
+import { ProductDetails } from '@pages/Home/ProductDetails';
+import React from 'react';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+
+const MarketNavigation = createNativeStackNavigator();
 
 const Market = () => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
-
-  useEffect(() => {
-    getProductData().then(setCategories);
-  }, []);
   return (
-    <View style={styles.market}>
-      {categories.map(cat => (
-        <Category key={cat.name} cat={cat} />
-      ))}
-    </View>
+    <MarketNavigation.Navigator>
+      <MarketNavigation.Screen name="Product Market" component={Categories} />
+      <MarketNavigation.Screen
+        name="Product Details"
+        component={ProductDetails}
+      />
+    </MarketNavigation.Navigator>
   );
 };
 

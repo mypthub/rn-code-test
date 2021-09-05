@@ -3,6 +3,9 @@ import { styles } from '@styles/product';
 import React, { useRef } from 'react';
 import { Animated, Easing, View } from 'react-native';
 
+type Props = {
+  onTouch: () => void;
+}
 export const RisingView: React.FC = props => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 

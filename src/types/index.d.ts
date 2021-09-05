@@ -7,12 +7,14 @@ export type ISeller = {
 };
 
 export type IProduct = {
+  id: number;
+  name: string;
+  image: URI;
   description: string;
+  short_description: string;
   order: number;
-  picUri: URI;
   price: Price;
   seller: ISeller;
-  title: string;
 };
 
 export type ICategory = {

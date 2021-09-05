@@ -1,8 +1,10 @@
-import 'react-native-gesture-handler';
+import Home from '@pages/Home';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import Home from '@pages/Home';
+import { enableScreens } from 'react-native-screens';
+
+enableScreens(true);
 
 const App = () => (
   <NavigationContainer>

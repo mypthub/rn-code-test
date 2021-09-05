@@ -22,7 +22,7 @@ export const ProductInfo = (props: Props) => {
   return (
     <View style={styles.product__info}>
       <View style={styles.product__info__props}>
-        <Text style={styles['product__info__props--title']}>{p.title}</Text>
+        <Text style={styles['product__info__props--title']}>{p.name}</Text>
         <Text style={styles['product__info__props--price']}>
           {formatPrice(p.price.value)}
           <Text>{' '}</Text>
