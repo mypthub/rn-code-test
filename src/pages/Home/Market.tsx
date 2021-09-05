@@ -9,10 +9,19 @@ const MarketNavigation = createNativeStackNavigator<MarketStackParams>();
 const Market = () => {
   return (
     <MarketNavigation.Navigator>
-      <MarketNavigation.Screen name="ProductMarket" component={Categories} />
+      <MarketNavigation.Screen
+        name="ProductMarket"
+        component={Categories}
+        options={{
+          title: 'Market',
+        }}
+      />
       <MarketNavigation.Screen
         name="ProductDetails"
         component={ProductDetails}
+        options={{
+          title: 'Product Details',
+        }}
       />
     </MarketNavigation.Navigator>
   );
