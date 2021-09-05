@@ -21,3 +21,9 @@ export type ICategory = {
   name: string;
   products: IProduct[];
 };
+
+
+export type MarketStackParams = {
+  ProductMarket: Record<string, unknown>;
+  ProductDetails: { id: number };
+};

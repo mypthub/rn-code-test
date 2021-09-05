@@ -5,8 +5,9 @@ import { Animated, Easing, View } from 'react-native';
 
 type Props = {
   onTouch: () => void;
-}
-export const RisingView: React.FC = props => {
+};
+
+export const RisingView: React.FC<Props> = props => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const onRelease = () => {
@@ -15,9 +16,10 @@ export const RisingView: React.FC = props => {
       duration: 200,
       easing: Easing.inOut(identity),
     }).start(() => {
+      props.onTouch();
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 50,
+        duration: 0,
       }).start();
     });
   };
