@@ -15,7 +15,7 @@ const Product = (props: Props) => {
   const { navigate } = useNavigation();
 
   const gotoDetails = () => {
-    navigate('ProductDetails', { id: p.id });
+    navigate('ProductDetails', { product: p });
   };
 
   return (

@@ -29,9 +29,7 @@ export enum Discount {
   None = 'none',
 }
 
-
-
 export type MarketStackParams = {
   ProductMarket: Record<string, unknown>;
-  ProductDetails: { id: number };
+  ProductDetails: { product: IProduct };
 };

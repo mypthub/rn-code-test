@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const commonStyles = StyleSheet.create({
   border: {
-    borderColor: 'black',
+    borderColor: 'red',
     borderWidth: 2,
   },
   'full-height': {
