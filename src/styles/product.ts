@@ -22,11 +22,11 @@ export const styles = StyleSheet.create({
     padding: 10,
     position: 'absolute',
     width: '100%',
-    justifyContent: 'space-between',
   },
   product__info__avatar: {},
   product__info__props: {
     height: '100%',
+    flex: 1,
   },
   'product__info__props--title': {
     ...commonStyles.font,

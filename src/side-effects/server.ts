@@ -1,27 +1,37 @@
-import { AVATAR_URI, IMAGE_URI } from '@common/constants';
+import { AVATAR_URI } from '@common/constants';
 import { Price } from '@common/price';
-import { range } from '@common/range';
-import { ICategory, IProduct } from 'types';
+import { Discount, ICategory, IProduct } from 'types';
+import products from '../../assets/products.json';
 
-const mkProduct = (category: string) => (n: number): IProduct => ({
-  seller: {
-    imageUri: `${AVATAR_URI}+${n}`,
-  },
-  price: Price.of(Math.round(Math.round(1000)))
-              .discountBy(11)
-              .amount(),
-  name: `Product ${n}`,
-  description: `Description ${n}`,
-  image: `${IMAGE_URI}${category}+${n}`,
-  order: Math.round(Math.random() * 10),
-  id: n,
-  short_description: 'Nothing',
-});
-
-const mkCategory = (name: string) => ({
+const mkCategory = (name: string, products: IProduct[]) => ({
   name,
-  products: range(10).map(mkProduct(name)),
+  products,
 });
 
-export const getProductData = (): Promise<ICategory[]> =>
-  Promise.resolve(['Ships', 'Planes', 'Cars'].map(mkCategory));
+const mkIProduct = (data: any): IProduct => ({
+  ...data,
+  discount: data.discount ?? 0,
+  price: Price
+    .of(data.price ?? 0)
+    .discountBy(
+      data.discount ?? 0,
+      data['discount_type'] ?? Discount.None,
+    ),
+  seller: {
+    imageUri: AVATAR_URI,
+  },
+  type: data['discount_type'] ?? Discount.None,
+});
+
+export const getProductData = (): Promise<ICategory[]> => {
+  const cats = products
+    .map(mkIProduct)
+    .reduce<Record<string, IProduct[]>>((agg, p) => {
+      agg[p.category] = agg[p.category] ? [...agg[p.category], p] : [p];
+      return agg;
+    }, {});
+
+  return Promise.resolve(
+    Object.keys(cats).map(name => mkCategory(name, cats[name])),
+  );
+};

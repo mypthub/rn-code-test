@@ -1,12 +1,8 @@
 import { Monad } from '@common/monad';
-
-enum Discount {
-  Percent = 'percent',
-  Amount = 'amount',
-}
+import { Discount } from 'types';
 
 export class Price extends Monad {
-  private _type: Discount = Discount.Amount;
+  private _type: Discount = Discount.None;
   private readonly _price: number;
 
   private constructor(price: number) {
@@ -43,20 +39,19 @@ export class Price extends Monad {
     return new Price(value);
   };
 
-  public discountBy(discount: number): Price {
+  public discountBy(discount: number, type: Discount = Discount.None): Price {
     this._discount = discount;
-    return this;
-  }
-
-  public percents(): Price {
-    this._type = Discount.Percent;
-    this.discountByPercent();
-    return this;
-  }
-
-  public amount(): Price {
-    this._type = Discount.Amount;
-    this.discountByValue();
+    this._type = type;
+    switch (type) {
+      case Discount.Amount:
+        this.discountByValue();
+        break;
+      case Discount.Percent:
+        this.discountByPercent();
+        break;
+      default:
+        break;
+    }
     return this;
   }
 

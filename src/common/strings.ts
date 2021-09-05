@@ -1,3 +1,5 @@
+import { MAX_CHARS_DESC, MAX_CHARS_TITLE } from '@common/constants';
+
 export const formatPrice = (num: number): string => {
   const n = Math.round(num);
   if (n <= 0) {
@@ -13,3 +15,11 @@ export const formatPrice = (num: number): string => {
   ].join('');
   return ['£', val[0] === '.' ? `0${val}` : val].join('');
 };
+
+export const elipsis = (max: number) => (str: string): string =>
+  str.length > max
+    ? [...str.split('').slice(0, max - 3), '...'].join('')
+    : str;
+
+export const maybeShortenTitle = elipsis(MAX_CHARS_TITLE);
+export const maybeShortenDesc = elipsis(MAX_CHARS_DESC);

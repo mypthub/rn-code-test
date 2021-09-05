@@ -7,20 +7,28 @@ export type ISeller = {
 };
 
 export type IProduct = {
-  id: number;
-  name: string;
-  image: URI;
+  category: string;
   description: string;
-  short_description: string;
+  id: number;
+  image: URI;
+  name: string;
   order: number;
   price: Price;
   seller: ISeller;
+  short_description: string;
 };
 
 export type ICategory = {
   name: string;
   products: IProduct[];
 };
+
+export enum Discount {
+  Percent = 'percentage',
+  Amount = 'amount',
+  None = 'none',
+}
+
 
 
 export type MarketStackParams = {
