@@ -2,11 +2,10 @@ import { commonStyles } from '@styles/common';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  market: {
-    ...commonStyles.avoidStatusBar,
+  categories: {
     ...commonStyles.margin,
     ...commonStyles['full-height'],
-    paddingBottom: 35,
+    paddingBottom: 5,
     display: 'flex',
   },
 });
