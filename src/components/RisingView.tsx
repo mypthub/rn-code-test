@@ -19,7 +19,8 @@ export const RisingView: React.FC<Props> = props => {
       props.onTouch();
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 0,
+        duration: 200,
+        easing: Easing.inOut(identity),
       }).start();
     });
   };
