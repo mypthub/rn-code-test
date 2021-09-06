@@ -1,7 +1,7 @@
 import React from 'react';
-import { SafeAreaView, Text, Linking, StyleSheet } from 'react-native';
+import { Linking, SafeAreaView, StyleSheet, Text } from 'react-native';
 
-const Info = () => (
+const Info = (): JSX.Element => (
   <SafeAreaView>
     <Text>Follow the instructions in the README file at:</Text>
     <Text
