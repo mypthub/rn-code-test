@@ -1,8 +1,8 @@
 import { Monad } from '@common/monad';
-import { Discount } from 'types';
+import { DiscountType } from 'types';
 
 export class Price extends Monad {
-  private _type: Discount = Discount.None;
+  private _type: DiscountType = DiscountType.None;
   private readonly _price: number;
 
   private constructor(price: number) {
@@ -17,7 +17,7 @@ export class Price extends Monad {
     return this._discount;
   }
 
-  public get discountType(): Discount {
+  public get discountType(): DiscountType {
     return this._type;
   }
 
@@ -39,14 +39,14 @@ export class Price extends Monad {
     return new Price(value);
   };
 
-  public discountBy(discount: number, type: Discount = Discount.None): Price {
+  public discountBy(discount: number, type: DiscountType): Price {
     this._discount = discount;
     this._type = type;
     switch (type) {
-      case Discount.Amount:
+      case DiscountType.Amount:
         this.discountByValue();
         break;
-      case Discount.Percent:
+      case DiscountType.Percent:
         this.discountByPercent();
         break;
       default:

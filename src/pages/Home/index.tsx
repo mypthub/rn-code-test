@@ -7,11 +7,11 @@ import Market from './Market';
 
 const HomeTabs = createBottomTabNavigator();
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
   return (
     <HomeTabs.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: iconProps => {
+        tabBarIcon: (iconProps) => {
           const { color, size } = iconProps;
 
           let iconName;

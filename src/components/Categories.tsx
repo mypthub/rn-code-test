@@ -3,9 +3,9 @@ import { getProductData } from '@side-effects/server';
 import { styles } from '@styles/categories';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { ICategory } from 'types';
+import { ICategory } from '../types';
 
-export const Categories = () => {
+export const Categories = (): JSX.Element => {
   const [categories, setCategories] = useState<ICategory[]>([]);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const Categories = () => {
   }, []);
   return (
     <View style={styles.categories}>
-      {categories.map(cat => (
+      {categories.map((cat) => (
         <Category key={cat.name} cat={cat} />
       ))}
     </View>

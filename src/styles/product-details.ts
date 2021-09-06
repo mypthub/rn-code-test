@@ -29,5 +29,4 @@ export const styles = StyleSheet.create({
     color: 'grey',
     margin: 10,
   },
-
 });

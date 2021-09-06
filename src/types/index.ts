@@ -23,7 +23,8 @@ export type ICategory = {
   products: IProduct[];
 };
 
-export enum Discount {
+// eslint-disable-next-line no-shadow
+export enum DiscountType {
   Percent = 'percentage',
   Amount = 'amount',
   None = 'none',

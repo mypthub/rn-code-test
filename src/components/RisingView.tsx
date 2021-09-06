@@ -7,7 +7,7 @@ type Props = {
   onTouch: () => void;
 };
 
-export const RisingView: React.FC<Props> = props => {
+export const RisingView: React.FC<Props> = (props) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const onRelease = () => {
@@ -32,8 +32,7 @@ export const RisingView: React.FC<Props> = props => {
           transform: [{ scale: fadeAnim }],
         },
         styles.product,
-      ]}
-    >
+      ]}>
       <View onTouchEnd={onRelease}>{props.children}</View>
     </Animated.View>
   );

@@ -16,10 +16,12 @@ export const formatPrice = (num: number): string => {
   return ['£', val[0] === '.' ? `0${val}` : val].join('');
 };
 
-export const elipsis = (max: number) => (str: string): string =>
-  str.length > max
-    ? [...str.split('').slice(0, max - 3), '...'].join('')
-    : str;
+export const elipsis =
+  (max: number) =>
+  (str: string): string =>
+    str.length > max
+      ? [...str.split('').slice(0, max - 3), '...'].join('')
+      : str;
 
 export const maybeShortenTitle = elipsis(MAX_CHARS_TITLE);
 export const maybeShortenDesc = elipsis(MAX_CHARS_DESC);
