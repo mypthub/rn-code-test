@@ -23,13 +23,15 @@ const mkIProduct = (data: any): IProduct => ({
   type: data['discount_type'] ?? Discount.None,
 });
 
+const splitIntoCategories = (
+  result: Record<string, IProduct[]>, p: IProduct,
+): Record<string, IProduct[]> => {
+  result[p.category] = result[p.category] ? [...result[p.category], p] : [p];
+  return result;
+};
+
 export const getProductData = (): Promise<ICategory[]> => {
-  const cats = products
-    .map(mkIProduct)
-    .reduce<Record<string, IProduct[]>>((agg, p) => {
-      agg[p.category] = agg[p.category] ? [...agg[p.category], p] : [p];
-      return agg;
-    }, {});
+  const cats = products.map(mkIProduct).reduce(splitIntoCategories, {});
 
   return Promise.resolve(
     Object.keys(cats).map(name => mkCategory(name, cats[name])),
