@@ -1,0 +1,125 @@
+{
+	"data": [{
+			"category_name": "Category 1",
+			"list": [{
+					"id": 1,
+					"name": "Product 1",
+					"price": 150,
+					"discount": 10,
+					"discount_type": "value",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "Lorem Ipsum is simply dummy text of the printing"
+				},
+				{
+					"id": 2,
+					"name": "Product 2",
+					"price": 250,
+					"discount": 0,
+					"discount_type": "",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1002/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				},
+				{
+					"id": 3,
+					"name": "Product 3",
+					"price": 400,
+					"discount": 15,
+					"discount_type": "discount",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1003/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
+				},
+				{
+					"id": 4,
+					"name": "Product 4",
+					"price": 100,
+					"discount": 15,
+					"discount_type": "value",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1025/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system"
+				}
+			]
+		},
+		{
+			"category_name": "Category 2",
+			"list": [{
+				"id": 5,
+				"name": "Product 5",
+				"price": 200,
+				"discount": 100,
+				"discount_type": "discount",
+				"currency": "GBP",
+				"product_image": "https://picsum.photos/id/1027/300/300",
+				"user_image": "https://picsum.photos/200",
+				"description": "At vero eos et accusamus et iusto odio"
+			}, {
+				"id": 6,
+				"name": "Product 6",
+				"price": 800,
+				"discount": 10,
+				"discount_type": "discount",
+				"currency": "GBP",
+				"product_image": "https://picsum.photos/id/1055/300/300",
+				"user_image": "https://picsum.photos/200",
+				"description": "At vero eos et accusamus et iusto odio"
+			}]
+
+		},
+		{
+			"category_name": "Category 3",
+			"list": [{
+					"id": 31,
+					"name": "Product 31",
+					"price": 200,
+					"discount": 20,
+					"discount_type": "discount",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/106/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "On the other hand, we denounce with righteous indignation and dislike men "
+				},
+				{
+					"id": 32,
+					"name": "Product 32",
+					"price": 500,
+					"discount": 100,
+					"discount_type": "value",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1069/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"
+				},
+				{
+					"id": 33,
+					"name": "Product 33",
+					"price": 1500,
+					"discount": 10,
+					"discount_type": "discount",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1074/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden"
+				},
+				{
+					"id": 34,
+					"name": "Product 34",
+					"price": 450,
+					"discount": 100,
+					"discount_type": "value",
+					"currency": "GBP",
+					"product_image": "https://picsum.photos/id/1080/300/300",
+					"user_image": "https://picsum.photos/200",
+					"description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit"
+				}
+			]
+
+		}
+	]
+}
