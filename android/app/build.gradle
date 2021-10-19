@@ -97,6 +97,9 @@ def enableSeparateBuildPerCPUArchitecture = false
  * Run Proguard to shrink the Java bytecode in release builds.
  */
 def enableProguardInReleaseBuilds = false
+def jscFlavor = 'org.webkit:android-jsc-intl:+'
+
+
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -109,7 +112,7 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US.  Note that
  * this variant is about 6MiB larger per architecture than default.
  */
-def jscFlavor = 'org.webkit:android-jsc:+'
+// def jscFlavor = 'org.webkit:android-jsc:+'
 
 /**
  * Whether to enable the Hermes VM.
